@@ -13,6 +13,14 @@ def read_events(response):
     return [json.loads(line) for line in response.text.splitlines()]
 
 
+def test_status_routes():
+    client = TestClient(main.app)
+    root = client.get("/")
+    assert root.status_code == 200
+    assert root.json()["status"] == "ok"
+    assert client.get("/api/health").json() == {"status": "ok"}
+
+
 def test_demo(monkeypatch):
     monkeypatch.setenv("DEMO_MODE", "true")
     client = TestClient(main.app)

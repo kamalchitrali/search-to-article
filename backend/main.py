@@ -30,6 +30,20 @@ class Brief(BaseModel):
         return value.strip() if isinstance(value, str) else value
 
 
+@app.get("/")
+def root():
+    return {
+        "status": "ok",
+        "message": "Backend is running. Open http://localhost:5173 for the web app.",
+        "docs": "/docs",
+    }
+
+
+@app.get("/api/health")
+def health():
+    return {"status": "ok"}
+
+
 def settings():
     return dict(demo=os.getenv("DEMO_MODE", "true").lower() == "true",
                 search_url=os.getenv("SEARCH_API_URL", "https://serpapi.com/search.json"),

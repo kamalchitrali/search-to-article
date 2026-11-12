@@ -8,13 +8,14 @@ Use Python 3.11+ and Node 22.12+.
 
 ```bash
 cp .env.example .env
-python -m venv .venv
+python3 -m venv .venv
 source .venv/bin/activate
 python -m pip install -r backend/requirements.txt
 python -m uvicorn backend.main:app --reload
 ```
 
-In a second terminal from the project root:
+Keep that backend terminal running. Open a **second terminal tab** (`Cmd+T` on
+macOS), then run these commands from the project root:
 
 ```bash
 npm --prefix frontend ci
@@ -22,6 +23,21 @@ npm --prefix frontend run dev
 ```
 
 Open http://localhost:5173 and click **Run demo**. Vite proxies API traffic to FastAPI on port 8000.
+Opening port 8000 directly only shows backend status; the web interface is on
+port 5173.
+
+After the first installation, restart the app with:
+
+```bash
+# Terminal 1
+cd /Users/apple/Documents/search-to-article
+source .venv/bin/activate
+python -m uvicorn backend.main:app --reload
+
+# Terminal 2
+cd /Users/apple/Documents/search-to-article
+npm --prefix frontend run dev
+```
 
 ## Live mode
 
