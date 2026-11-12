@@ -1,12 +1,13 @@
 {
   "name": "frontend",
   "version": "1.0.0",
+  "description": "React frontend for turning ranked search results into cited articles.",
   "scripts": {
     "dev": "vite",
     "build": "tsc --noEmit && vite build",
     "preview": "vite preview"
   },
-  "license": "ISC",
+  "license": "MIT",
   "type": "module",
   "dependencies": {
     "react": "^19.3.1",
